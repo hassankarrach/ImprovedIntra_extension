@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "ts-extension-starter",
+  "version": "1.0.0",
+  "description": "DEVELOPMENT build with simple auto-reloader\n[2024-12-07 19:09:24] waiting for changes...",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/16.png",
+      "24": "assets/icons/24.png",
+      "32": "assets/icons/32.png"
+    },
+    "default_title": "Tooltip title",
+    "default_popup": "pages/popup/index.html"
+  },
+  "icons": {
+    "48": "assets/icons/64.png",
+    "64": "assets/icons/64.png",
+    "128": "assets/icons/128.png",
+    "256": "assets/icons/256.png"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/content-script-reloader-5ee50fbf.js",
+        "/scripts/import-ui.js"
+      ],
+      "matches": [
+        "https://profile.intra.42.fr/"
+      ],
+      "css": [
+        "IntraUI.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "chunks/*-*.js",
+        "scripts/ui.js"
+      ],
+      "matches": [
+        "https://profile.intra.42.fr/*"
+      ]
+    }
+  ]
+}
