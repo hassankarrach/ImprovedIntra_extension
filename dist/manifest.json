@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ts-extension-starter",
   "version": "1.0.0",
-  "description": "DEVELOPMENT build with simple auto-reloader\n[2024-12-07 19:09:24] waiting for changes...",
+  "description": "DEVELOPMENT build with simple auto-reloader\n[2024-12-17 15:09:32] waiting for changes...",
   "background": {
     "service_worker": "background.js",
     "type": "module"
@@ -29,14 +29,15 @@
   "content_scripts": [
     {
       "js": [
-        "assets/content-script-reloader-5ee50fbf.js",
-        "/scripts/import-ui.js"
+        "assets/content-script-reloader-0b0f9e75.js",
+        "/scripts/import-main.js"
       ],
       "matches": [
-        "https://profile.intra.42.fr/"
+        "https://profile.intra.42.fr/*"
       ],
       "css": [
-        "IntraUI.css"
+        "/styles/IntraStyles.css",
+        "/styles/NewUiStyles.css"
       ],
       "run_at": "document_start"
     }
@@ -45,7 +46,7 @@
     {
       "resources": [
         "chunks/*-*.js",
-        "scripts/ui.js"
+        "scripts/main.js"
       ],
       "matches": [
         "https://profile.intra.42.fr/*"

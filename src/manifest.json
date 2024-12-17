@@ -21,9 +21,9 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://profile.intra.42.fr/"],
-      "css": ["IntraUI.css"],
-      "js": ["/scripts/ui.ts"],
+      "matches": ["https://profile.intra.42.fr/*"],
+      "css": ["/styles/IntraStyles.css", "/styles/NewUiStyles.css"],
+      "js": ["/scripts/main.ts"],
       "run_at": "document_start"
     }
   ]

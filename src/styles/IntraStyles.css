@@ -1,0 +1,151 @@
+/* Vars */
+:root {
+  --main-font: 'Xirod', sans-serif;
+  --main-color: #02ccd0;
+  --main-bg: #20222b;
+  --main-midDark-bg: #292c38;
+  --main-lightDark-bg: #363a49;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Alter few styles */
+
+body {
+  background-color: var(--main-bg) !important;
+}
+
+/* Header Container */
+.main-navbar {
+  background-color: var(--main-midDark-bg) !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.main-navbar .main-navbar-left .twitter-typeahead input {
+  background-color: var(--main-lightDark-bg) !important;
+  width: 300px !important;
+  padding: 10px 5px !important;
+  border-radius: 5px;
+}
+
+body > div.main-navbar > div.main-navbar-user-nav > span > a > div {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 5px;
+}
+body > div.main-navbar > div.main-navbar-user-nav > span > a > span {
+  color: white !important;
+  opacity: 0.5;
+}
+body > div.main-navbar > div.main-navbar-user-nav > span > a > span:hover {
+  opacity: 1;
+}
+
+.page .page-sidebar .main-left-navbar ._ .active {
+  /* border : 1px solid var(--main-color) !important; */
+  border-radius: 15px;
+}
+
+/* Boxes */
+body > div.page > div.page-content.page-content-fluid > div > div.container-fullsize.full-width.fixed-height > div > div,
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div
+  > div {
+  background-color: var(--main-midDark-bg);
+  border: 1px solid var(--main-lightDark-bg);
+}
+
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div
+  > div
+  h3,
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div
+  > div
+  h4 {
+  color: white;
+}
+#highcharts-0 > svg > g.highcharts-axis-labels.highcharts-xaxis-labels > text {
+  fill: white !important;
+}
+
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div:nth-child(8)
+  > div
+  > div
+  > div {
+  background-color: var(--main-lightDark-bg);
+  border: 1px solid var(--main-lightDark-bg);
+}
+
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div:nth-child(8)
+  > div
+  > div
+  > div
+  > div.achievement-item--image {
+  background-color: var(--main-midDark-bg);
+  border-left: 1px solid var(--main-midDark-bg);
+}
+
+body
+  > div.page
+  > div.page-content.page-content-fluid
+  > div
+  > div.align-top
+  > div
+  > div.container-fullsize.full-width.fixed-height
+  > div
+  > div:nth-child(8)
+  > div
+  > div
+  > div
+  > div.achievement-item--content
+  > h1 {
+  color: white;
+}

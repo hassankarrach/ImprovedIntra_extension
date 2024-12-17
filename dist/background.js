@@ -1,5 +1,5 @@
 // SIMPLE RELOADER IMPORT
-              import "./assets/background-page-reloader-1651cbbe.js"
+              import "./assets/background-page-reloader-2e8299a2.js"
               function init() {
     console.log('content script');
 }
