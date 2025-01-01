@@ -1,13 +1,13 @@
 // ========= Usefull Html Elements =>
-export const PageContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div';
-export const HeaderContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width';
 export const CursusSwitch = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div._ > div.col-md-3.padding-0.profile-infos.profile-right-box > div > div > div:nth-child(3) > span.user-cursus > select';
 export const LoginSwitch =  '#title-selector';
 export const PointsDonation = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div._ > div.col-md-3.padding-0.profile-infos.profile-right-box > div > div > div.user-correction-point.user-inline-stat > span.user-correction-point-value.d-flex.align-items-center > div:nth-child(3) > span > a';
 export const HolyGraph = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div.user-primary > div > h2 > div.pull-right.button-actions.margin-right-42 > a:nth-child(1)';
 
-
-export const UserProfile = document.querySelector('body > div.page > div.page-content.page-content-fluid > div > div.container-item.full-width.profile-item.profile-on-users') as HTMLElement;
+export const MyPageContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div';
+export const UserPageContainer = 'body > div.page > div.page-content.page-content-fluid > div';
+export const MyProfileContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width';
+export const UserProfileContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.container-item.full-width.profile-item.profile-on-users';
 
 // ========= User data =>
 export const FullName = document.querySelector('div') as HTMLElement

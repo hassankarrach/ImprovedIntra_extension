@@ -1,6 +1,5 @@
 import { Data } from '../types/types'
 import { ElObserver } from '../utils/Observer'
-import { CursusSwitch, PageContainer } from '../utils/QuerySelectors'
 import { GetHeader } from './Html-elements'
 
 class UiMonitor {
@@ -9,10 +8,12 @@ class UiMonitor {
   constructor() {
     this.Data = {
       UsefullElements: {
-        PageContainer: null,
+        MyPageContainer: null,
+        UserPageContainer: null,
         CursusSwitch: null,
         PointsDonation: null,
-        HeaderContainer: null,
+        MyProfileContainer: null,
+        UserProfileContainer: null,
         HolyGraph: null,
         LoginSwitch: null,
       },
@@ -46,15 +47,17 @@ class UiMonitor {
   }
 
   setUsefullElements = (
-    PageContainer:string,
-    HeaderContainerSelector: string,
+    MyPageContainer:string,
+    UserPageContainer: string,
+    MyProfileContainer: string,
+    UserProfileContainer: string,
     PointsDonationSelector: string,
     HolyGraphSelector: string,
     CursusSwitchSelector: string,
     LoginSwitchSelector: string,
   ) => {
-    ElObserver(PageContainer, (el: HTMLElement) => {
-      this.Data.UsefullElements.PageContainer = el
+    ElObserver(MyPageContainer, (el: HTMLElement) => {
+      this.Data.UsefullElements.MyPageContainer = el
 
       console.log("get here")
 
@@ -68,12 +71,20 @@ class UiMonitor {
       })
     
       el.appendChild(DebugerEl)
-      // this.InjectBanner()
       // this.HideCurrentHeader()
     })
-    ElObserver(HeaderContainerSelector, (el: HTMLElement) => {
-      this.Data.UsefullElements.HeaderContainer = el
+    ElObserver(UserPageContainer, (el: HTMLElement) => {
+      this.Data.UsefullElements.UserPageContainer = el
+      this.HideCurrentHeader()
+      this.InjectBanner();
+    })
+    ElObserver(MyProfileContainer, (el: HTMLElement) => {
+      this.Data.UsefullElements.MyProfileContainer = el
       // this.HideCurrentHeader()
+    })
+    ElObserver(UserProfileContainer, (el: HTMLElement) => {
+      this.Data.UsefullElements.UserProfileContainer = el
+      this.RemoveCurrentHeader()
     })
     ElObserver(PointsDonationSelector, (el: HTMLElement) => {
       this.Data.UsefullElements.PointsDonation = el
@@ -94,8 +105,17 @@ class UiMonitor {
   }
 
   HideCurrentHeader = () => {
-    if (this.Data.UsefullElements.HeaderContainer)
-      this.Data.UsefullElements.HeaderContainer.style.opacity = '0'
+    if (this.Data.UsefullElements.MyProfileContainer)
+      this.Data.UsefullElements.MyProfileContainer.style.opacity = '0'
+    if (this.Data.UsefullElements.UserProfileContainer)
+      this.Data.UsefullElements.UserProfileContainer.style.opacity = '0'
+  }
+
+  RemoveCurrentHeader = () => {
+    if (this.Data.UsefullElements.MyProfileContainer)
+      this.Data.UsefullElements.MyProfileContainer.remove()
+    if (this.Data.UsefullElements.UserProfileContainer)
+      this.Data.UsefullElements.UserProfileContainer.remove()
   }
 
   InjectBanner = () => {
@@ -103,8 +123,8 @@ class UiMonitor {
     const Header = document.createElement('div') as HTMLElement
     Header.innerHTML = HeaderContent
 
-    if (this.Data.UsefullElements.PageContainer)
-      this.Data.UsefullElements.PageContainer.prepend(Header)
+    if (this.Data.UsefullElements.UserPageContainer)
+      this.Data.UsefullElements.UserPageContainer.prepend(Header)
   }
 
   Debuger = () => {

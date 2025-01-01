@@ -1,23 +1,27 @@
 import { UiMonitor } from './DomMonitor'
 
 import {
-  HeaderContainer,
+  MyProfileContainer,
+  UserProfileContainer,
   PointsDonation,
   HolyGraph,
   CursusSwitch,
   LoginSwitch,
-  PageContainer,
+  MyPageContainer,
+  UserPageContainer,
 } from '../utils/QuerySelectors'
 
 const Ui = new UiMonitor()
 
 // Inject Font
-Ui.InjectFonts('https://fonts.cdnfonts.com/css/xirod')
+Ui.InjectFonts('https://fonts.cdnfonts.com/css/xirod');
 
 document.addEventListener('DOMContentLoaded', () => {
   Ui.setUsefullElements(
-    PageContainer,
-    HeaderContainer,
+    MyPageContainer,
+    UserPageContainer,
+    MyProfileContainer,
+    UserProfileContainer,
     PointsDonation,
     HolyGraph,
     CursusSwitch,

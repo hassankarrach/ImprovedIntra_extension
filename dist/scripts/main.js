@@ -10,12 +10,14 @@ const ElObserver = (Selector, Callback) => {
 };
 
 // ========= Usefull Html Elements =>
-const PageContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div';
-const HeaderContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width';
 const CursusSwitch = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div._ > div.col-md-3.padding-0.profile-infos.profile-right-box > div > div > div:nth-child(3) > span.user-cursus > select';
 const LoginSwitch = '#title-selector';
 const PointsDonation = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div._ > div.col-md-3.padding-0.profile-infos.profile-right-box > div > div > div.user-correction-point.user-inline-stat > span.user-correction-point-value.d-flex.align-items-center > div:nth-child(3) > span > a';
 const HolyGraph = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width > div > div.user-column.flex.flex-direction-column > div.user-primary > div > h2 > div.pull-right.button-actions.margin-right-42 > a:nth-child(1)';
+const MyPageContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div';
+const UserPageContainer = 'body > div.page > div.page-content.page-content-fluid > div';
+const MyProfileContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.align-top > div > div.container-item.profile-item.full-width';
+const UserProfileContainer = 'body > div.page > div.page-content.page-content-fluid > div > div.container-item.full-width.profile-item.profile-on-users';
 // ========= User data =>
 document.querySelector('div');
 document.querySelector('div');
@@ -372,9 +374,9 @@ class UiMonitor {
             link.href = FontUrl;
             document.head.appendChild(link);
         };
-        this.setUsefullElements = (PageContainer, HeaderContainerSelector, PointsDonationSelector, HolyGraphSelector, CursusSwitchSelector, LoginSwitchSelector) => {
-            ElObserver(PageContainer, (el) => {
-                this.Data.UsefullElements.PageContainer = el;
+        this.setUsefullElements = (MyPageContainer, UserPageContainer, MyProfileContainer, UserProfileContainer, PointsDonationSelector, HolyGraphSelector, CursusSwitchSelector, LoginSwitchSelector) => {
+            ElObserver(MyPageContainer, (el) => {
+                this.Data.UsefullElements.MyPageContainer = el;
                 console.log("get here");
                 const DebugerEl = document.createElement('div');
                 // give it id
@@ -384,12 +386,20 @@ class UiMonitor {
                     this.Debuger();
                 });
                 el.appendChild(DebugerEl);
-                // this.InjectBanner()
                 // this.HideCurrentHeader()
             });
-            ElObserver(HeaderContainerSelector, (el) => {
-                this.Data.UsefullElements.HeaderContainer = el;
+            ElObserver(UserPageContainer, (el) => {
+                this.Data.UsefullElements.UserPageContainer = el;
+                this.HideCurrentHeader();
+                this.InjectBanner();
+            });
+            ElObserver(MyProfileContainer, (el) => {
+                this.Data.UsefullElements.MyProfileContainer = el;
                 // this.HideCurrentHeader()
+            });
+            ElObserver(UserProfileContainer, (el) => {
+                this.Data.UsefullElements.UserProfileContainer = el;
+                this.RemoveCurrentHeader();
             });
             ElObserver(PointsDonationSelector, (el) => {
                 this.Data.UsefullElements.PointsDonation = el;
@@ -409,15 +419,23 @@ class UiMonitor {
             });
         };
         this.HideCurrentHeader = () => {
-            if (this.Data.UsefullElements.HeaderContainer)
-                this.Data.UsefullElements.HeaderContainer.style.opacity = '0';
+            if (this.Data.UsefullElements.MyProfileContainer)
+                this.Data.UsefullElements.MyProfileContainer.style.opacity = '0';
+            if (this.Data.UsefullElements.UserProfileContainer)
+                this.Data.UsefullElements.UserProfileContainer.style.opacity = '0';
+        };
+        this.RemoveCurrentHeader = () => {
+            if (this.Data.UsefullElements.MyProfileContainer)
+                this.Data.UsefullElements.MyProfileContainer.remove();
+            if (this.Data.UsefullElements.UserProfileContainer)
+                this.Data.UsefullElements.UserProfileContainer.remove();
         };
         this.InjectBanner = () => {
             const HeaderContent = GetHeader(this.Data);
             const Header = document.createElement('div');
             Header.innerHTML = HeaderContent;
-            if (this.Data.UsefullElements.PageContainer)
-                this.Data.UsefullElements.PageContainer.prepend(Header);
+            if (this.Data.UsefullElements.UserPageContainer)
+                this.Data.UsefullElements.UserPageContainer.prepend(Header);
         };
         this.Debuger = () => {
             console.log('Debuger');
@@ -425,10 +443,12 @@ class UiMonitor {
         };
         this.Data = {
             UsefullElements: {
-                PageContainer: null,
+                MyPageContainer: null,
+                UserPageContainer: null,
                 CursusSwitch: null,
                 PointsDonation: null,
-                HeaderContainer: null,
+                MyProfileContainer: null,
+                UserProfileContainer: null,
                 HolyGraph: null,
                 LoginSwitch: null,
             },
@@ -459,5 +479,5 @@ const Ui = new UiMonitor();
 // Inject Font
 Ui.InjectFonts('https://fonts.cdnfonts.com/css/xirod');
 document.addEventListener('DOMContentLoaded', () => {
-    Ui.setUsefullElements(PageContainer, HeaderContainer, PointsDonation, HolyGraph, CursusSwitch, LoginSwitch);
+    Ui.setUsefullElements(MyPageContainer, UserPageContainer, MyProfileContainer, UserProfileContainer, PointsDonation, HolyGraph, CursusSwitch, LoginSwitch);
 });

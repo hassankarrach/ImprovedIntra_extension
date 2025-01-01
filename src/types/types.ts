@@ -2,8 +2,10 @@
 export type Status = 'online' | 'offline' | 'idle';
 
 export interface UsefullElements {
-    PageContainer : HTMLElement | null;
-    HeaderContainer : HTMLElement | null;
+    MyPageContainer : HTMLElement | null;
+    UserPageContainer : HTMLElement | null;
+    MyProfileContainer : HTMLElement | null;
+    UserProfileContainer : HTMLElement | null;
     PointsDonation : HTMLElement | null;
     HolyGraph : HTMLElement | null;
     CursusSwitch : HTMLElement | null;
